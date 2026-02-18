@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 28px;
+  background-color: #000;
+  position: sticky;
+  top: 0;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 18px;
+}
