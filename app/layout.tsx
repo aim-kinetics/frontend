@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Header } from "../commons/components/Header";
+import style from "./page.module.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +26,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <div className={style.header}>
+          <Header />
+        </div>
+        <main className={style.main}>{children}</main>
       </body>
     </html>
   );

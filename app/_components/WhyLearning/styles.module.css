@@ -1,0 +1,142 @@
+.container {
+  padding: 80px 40px;
+  text-align: center;
+  background: linear-gradient(#000, rgb(16, 24, 40));
+
+  @media screen and (max-width: 767px) {
+    padding: 40px 16px;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 12px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 32px;
+  }
+}
+
+.description {
+  font-size: 18px;
+  margin-bottom: 60px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+}
+.cardWrapper {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 64px;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+}
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 40px;
+  border-radius: 16px;
+  flex-wrap: nowrap;
+
+  @media screen and (max-width: 767px) {
+    padding: 24px 16px;
+    gap: 12px;
+  }
+}
+
+.cardIconImage {
+  width: 32px;
+  height: 32px;
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.cardDescription {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.card1 {
+  border: 1px solid rgba(0, 184, 219, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(21, 93, 252, 0.05),
+    rgba(0, 18, 219, 0.1)
+  );
+}
+
+.card2 {
+  border: 1px solid rgba(173, 70, 255, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(173, 70, 255, 0.1),
+    rgba(230, 0, 118, 0.1)
+  );
+}
+
+.card3 {
+  border: 1px solid rgba(231, 0, 11, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(231, 0, 11, 0.1),
+    rgba(255, 105, 0, 0.1)
+  );
+}
+
+.imageCardWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.imageCard {
+  border-radius: 16px;
+  overflow: hidden;
+  flex: 1;
+  position: relative;
+}
+.image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.imageCardContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  color: #fff;
+  padding: 24px;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+}
+
+.imageCardTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.imageCardDescription {
+  font-size: 16px;
+  line-height: 1.5;
+}
