@@ -14,14 +14,13 @@ export const HeroSection: React.FC = () => {
       <div className={styles.overlay}>
         <p className={styles.subTitle}>AIM Technical Guide</p>
         <h1 className={styles.title}>
-          マウス操作
+          知ることで強くなる
           <br />
-          完全ガイド
         </h1>
         <p className={styles.description}>
-          FPSゲームで勝つためのマウステクニックを
+          知ることは誰でもできる
           <br />
-          基礎から上級まで完全網羅
+          知ることで強くなれる
         </p>
       </div>
       <div className={styles.scrollIndicator}>

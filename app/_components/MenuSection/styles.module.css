@@ -1,0 +1,72 @@
+.container {
+  padding: 80px 40px;
+  text-align: center;
+  background: linear-gradient(#000, rgb(16, 24, 40));
+  @media screen and (max-width: 767px) {
+    padding: 40px;
+  }
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 32px;
+  }
+}
+
+.list {
+  display: grid;
+  gap: 16px;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.number {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 16px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(0, 184, 219, 0.3);
+  background: linear-gradient(
+    135deg,
+    rgba(21, 93, 252, 0.5),
+    rgba(0, 18, 219, 0.7)
+  );
+  border-radius: 8px;
+  flex-shrink: 0;
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+    padding-top: 4px;
+  }
+}
+.listItem {
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  list-style: none;
+  font-size: 18px;
+  margin-bottom: 8px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: black;
+  opacity: 0.7;
+  border: 1px solid white;
+
+  @media screen and (max-width: 767px) {
+    padding: 16px;
+  }
+}

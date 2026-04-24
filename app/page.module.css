@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  gap: 20px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2027;
+}
+
+.main {
+  margin-top: 64px;
+}

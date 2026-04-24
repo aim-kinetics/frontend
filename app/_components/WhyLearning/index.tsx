@@ -8,38 +8,46 @@ import Image from "next/image";
 export const WhyLearning: React.FC = () => {
   return (
     <section className={style.container}>
-      <h2 className={style.title}>なぜAIMを学ぶのか？</h2>
+      <h2 className={style.title}>徹底的に基礎を</h2>
       <p className={style.description}>
-        正しいマウス操作を学ぶことで精度・反応速度・疲労軽減など様々なメリットがあります。
+        トッププレイヤーのAIM理論は間違ってないが、土台となる基礎ができてる前提
       </p>
 
       <div className={style.cardWrapper}>
         <div className={`${style.card} ${style.card1}`}>
           <div className={style.cardIcon}>
-            <CursorArrowRaysIcon width={40} height={40} />
+            <CursorArrowRaysIcon
+              width={40}
+              height={40}
+              className={style.cardIconImage}
+            />
           </div>
 
-          <h3 className={style.cardTitle}>精度の向上</h3>
+          <h3 className={style.cardTitle}>指先で動かす</h3>
           <p className={style.cardDescription}>
-            正しいマウス操作を学ぶことで、エイムの精度が向上。これにより、敵にレティクルを正確に合わせられるようになります。
+            指先の意識は最後、もっと意識するべきことがあります。
           </p>
         </div>
         <div className={`${style.card} ${style.card2}`}>
           <div className={style.cardIcon}>
-            <BoltIcon width={40} height={40} />
+            <BoltIcon width={40} height={40} className={style.cardIconImage} />
           </div>
-          <h3 className={style.cardTitle}>反応速度の向上</h3>
+          <h3 className={style.cardTitle}>敵を見ている</h3>
           <p className={style.cardDescription}>
-            正しい目の使い方とマウス操作を学ぶことで、反応速度が向上。これにより、敵の動きに最速で反応できるようになります。
+            敵を見ているのではなく見えているだけ。 意識の違いで変わります
           </p>
         </div>
         <div className={`${style.card} ${style.card3}`}>
           <div className={style.cardIcon}>
-            <HandRaisedIcon width={40} height={40} />
+            <HandRaisedIcon
+              width={40}
+              height={40}
+              className={style.cardIconImage}
+            />
           </div>
-          <h3 className={style.cardTitle}>疲労の軽減</h3>
+          <h3 className={style.cardTitle}>動作の流れを知らない</h3>
           <p className={style.cardDescription}>
-            正しいマウス操作を学ぶことで、手首や腕の負担が減り、長時間プレイしても疲れにくくなります。
+            プロのAIMが蛇のように見えるのは動作の流れを知っているからです。
           </p>
         </div>
       </div>
@@ -54,9 +62,11 @@ export const WhyLearning: React.FC = () => {
             className={style.image}
           />
           <div className={style.imageCardContent}>
-            <p className={style.imageCardTitle}>常に変わらないAIM</p>
+            <p className={style.imageCardTitle}>基礎の上に応用</p>
             <p className={style.imageCardDescription}>
-              理論を学ぶことで、日によらない安定したAIMを手に入れることができます。
+              プロのマウス操作のベースは同じ、応用が違うだけです。
+              <br />
+              たいていの理論はその応用の部分だけを見ているので、基礎を知らないと理解できません。
             </p>
           </div>
         </div>
@@ -69,9 +79,11 @@ export const WhyLearning: React.FC = () => {
             className={style.image}
           />
           <div className={style.imageCardContent}>
-            <p className={style.imageCardTitle}>誰でもトップ層になれる</p>
+            <p className={style.imageCardTitle}>下手なのは知らないだけ</p>
             <p className={style.imageCardDescription}>
-              才能は関係ありません。正しい方法を学び、継続することで誰でもトップ層のAIMを手に入れることができます。
+              才能の差はあります。ただ、上限は思ってるより高い。
+              <br />
+              そして、上限を知るには知識が必要です。
             </p>
           </div>
         </div>

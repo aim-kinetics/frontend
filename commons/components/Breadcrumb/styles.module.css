@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+
+.list a:hover {
+  text-decoration: underline;
+}

@@ -2,22 +2,40 @@
   padding: 80px 40px;
   text-align: center;
   background: linear-gradient(#000, rgb(16, 24, 40));
+
+  @media screen and (max-width: 767px) {
+    padding: 40px 16px;
+  }
 }
 
 .title {
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 12px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 32px;
+  }
 }
 
 .description {
   font-size: 18px;
   margin-bottom: 60px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
 }
 .cardWrapper {
   display: flex;
   gap: 32px;
   margin-bottom: 64px;
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
 }
 .card {
   flex: 1;
@@ -28,7 +46,18 @@
   padding: 40px;
   border-radius: 16px;
   flex-wrap: nowrap;
+
+  @media screen and (max-width: 767px) {
+    padding: 24px 16px;
+    gap: 12px;
+  }
 }
+
+.cardIconImage {
+  width: 32px;
+  height: 32px;
+}
+
 .cardTitle {
   font-size: 24px;
   font-weight: bold;
@@ -69,6 +98,10 @@
   display: flex;
   justify-content: center;
   gap: 28px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .imageCard {

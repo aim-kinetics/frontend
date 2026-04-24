@@ -1,0 +1,53 @@
+.sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-top: 94px;
+  width: 210px;
+  height: calc(100vh - 64px);
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.content {
+  padding-left: 210px;
+  margin-top: 32px;
+
+  @media screen and (max-width: 767px) {
+    padding: 0;
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.breadcrumb {
+  position: fixed;
+  top: 64px;
+  width: 100%;
+  z-index: 2026;
+  height: 30px;
+  border-top: 1px solid #51565d;
+  border-bottom: 1px solid #51565d;
+  background-color: #212426;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  border: none;
+  border-right: 2px solid #51565d;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin-right: 8px;
+  padding-right: 8px;
+  background-color: inherit;
+  cursor: pointer;
+}
