@@ -1,0 +1,29 @@
+.imageContainer {
+  width: 100%;
+  will-change: transform;
+}
+
+.moveEyesImage {
+  display: block;
+  height: 100px !important;
+  width: 100%;
+  object-fit: contain;
+  animation: moveEyes 2s linear infinite;
+}
+@keyframes moveEyes {
+  0% {
+    transform: translateX(-40%);
+  }
+  97% {
+    transform: translateX(40%);
+  }
+  98% {
+    transform: translateX(-40%);
+  }
+  /* 99% {
+    transform: translateX(40%);
+  } */
+  100% {
+    transform: translateX(40%);
+  }
+}

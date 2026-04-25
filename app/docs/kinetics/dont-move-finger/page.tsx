@@ -2,6 +2,13 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AIMの教科書 | 指の意識について",
+  description:
+    "指の動きについて、親指の特殊な動きとその影響について解説しています。",
+};
 
 export default function RuleThumbPage() {
   return (
@@ -9,7 +16,20 @@ export default function RuleThumbPage() {
       <div className={style.container}>
         <h1>指の意識について</h1>
         <p>指はマウスをクリックしたりするうえで重要な役割を果たします。</p>
-        <p>ただし、親指だけは他の指とは異なり特殊な動きをします。</p>
+        <p>
+          また、指単体の動きはマウスの移動に影響を与えず、力みの原因になります。
+        </p>
+        <p>さらに親指だけは他の指とは異なり特殊な動きをします。</p>
+
+        <h2>指ではマウスは動かない</h2>
+        <p>多くの人がマウスを持つときに手のひらが付いてるかと思います。</p>
+        <p>
+          手のひらが付いてるのにそこから先にある指でマウスが動くわけないですね。
+        </p>
+        <p>
+          指先で動かしてると言ってる人は筋肉と関節の関係で説明したように前腕から伸びて指先についている腱を意識しているにすぎません。
+        </p>
+        <p>前腕から手全体を動かしてる意識を持ちましょう。</p>
 
         <h2>親指に動かされるな</h2>
         <p>親指の動きはほかの指とは違って特殊な動きをします。</p>
