@@ -2,18 +2,24 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "AIMの教科書 | 筋肉と関節の関係",
+  description:
+    "マウスの動かし方について、手首は前腕から、腕は肩甲骨から動かすことが重要であることを解説しています。",
+};
 export default function RuleKineticsPage() {
   return (
     <>
       <div className={style.container}>
-        <h1 className={style.header}>マウスは手首から腕・肩の順に動かす</h1>
+        <h1 className={style.header}>筋肉と関節の関係</h1>
         <p>
           トラッキングの切り替えしやフリックで力むという悩みを持った人は多いはずです。
           <br />
           そういった人は手首を正しく曲げる動作を覚えることから始める必要があります。
         </p>
-        <h2 className={style.header}>先に結論</h2>
+        <h2>先に結論</h2>
         <ul>
           <li>マウスは手首を前腕の筋肉をねじることを意識して動かす</li>
           <li>腕は肩甲骨から</li>
@@ -25,10 +31,6 @@ export default function RuleKineticsPage() {
           </ul>
           <li>肩甲骨は上半身を動かして操作する</li>
         </ul>
-        <p>この順番で動かすことが正しいマウスの動かし方になります。</p>
-        <p>
-          また、最近よく言われる見た目が蛇のように見える動きはこの動作をした結果です。
-        </p>
         <h2>手首は前腕から動かす</h2>
         <p>手首を曲げるとき、手首ではなく前腕の筋肉が主に使われます。</p>
         <p>

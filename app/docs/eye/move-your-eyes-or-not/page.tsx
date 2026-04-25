@@ -1,43 +1,40 @@
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
+import styles from "./styles.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AIMの教科書 | 目は動かさない",
-  description: "",
+  title: "AIMの教科書 | 目を動かす動かさない論争",
+  description:
+    "目は動かすべきか動かさないべきかについて解説しています。反応速度の面では動かさないほうがいいという研究結果もあります。",
 };
 export default function RuleEyePage() {
   return (
     <>
       <div className={style.container}>
-        <h1>目は動かさない</h1>
-        <p>
-          目には大きく分けて2つの神経回路があります(Ventral streamとDorsal
-          stream)。興味がある人は調べてみてください
-        </p>
-        <p>
-          ざっくりいうと、Ventral streamは詳細を見る神経、Dorsal
-          streamは場所を把握する神経。
-          <br />
-          もっと簡単にいうと空間の認識と物体の詳細の認識を制御しています。
-        </p>
-        <p>
-          ここで大事なのは物体が何なのかを認識すると反応速度が遅くなるということです。
-        </p>
-        <p>
-          下記論文によると、詳細を見る神経が活性化しているときの反応速度は場所を把握する神経が活性化しているときの反応速度よりも遅いことがわかっています。
-          <br />
-          また、年齢による差は詳細に見る神経が混ざることで遅くなることも書かれています。
-          <br />
-          <a href="https://www.researchgate.net/publication/331846958_The_effect_of_different_visual_stimuli_on_reaction_times_a_performance_comparison_of_young_and_middle-aged_people">
-            The effect of different visual stimuli on reaction times: a
-            performance comparison of young and middle-aged people
-          </a>
-        </p>
+        <h1>目を動かす動かさない論争</h1>
+        <p>まずはまとめ</p>
+        <ul>
+          <li>目を動かすと情報を落として脳の負荷を下げようとする</li>
+          <li>反応速度の面でいうと目を動かさないほうがいい</li>
+        </ul>
 
-        <h2>画面に集中するな見ようとするな</h2>
+        <h2>目を動かすと情報を落として脳の負荷を下げようとする</h2>
+        <p>
+          日常生活で目を動かしたことによる視界のブレを感じたことはありますか？ほとんどないと思います。
+        </p>
+        <p>
+          もしブレを感じたなら目ではなく対象が高速で動いてるのではないでしょうか？
+        </p>
+        <p>
+          これは目を高速で動かしたとき、脳が情報を落として視界のブレを抑える仕組みがあるからです。これをサッカード効果やサッカード抑制などと言ったりします。
+        </p>
+        <p>
+          サッカード効果がどの程度影響があるかわかりませんが一応こういうこともある程度で認識しておくといいかもしれませんね
+        </p>
+        <h2>反応速度の面でいうと目を動かさないほうがいい</h2>
         <p>
           目を動かさないと反応速度が速くなるという研究結果が示されています。
           <br />
@@ -48,7 +45,7 @@ export default function RuleEyePage() {
           </a>
         </p>
         <p>
-          おそらくこの結果を見るに目は動かさないほうが場所を把握する視野優位で認識することができるのではないかと思います。
+          おそらくこの結果を見るに目は動かさないほうが場所を把握する神経回路で認識することができるのではないかと思います。
         </p>
         <p>
           本人もこのトレーニングアプリを使ったところ体感してトラッキング時の切り返しの速度が向上したと感じました。ソフトは著者の方が説明しているのでご覧ください。少し起動が難しいですがぜひやってみて下さい。
@@ -72,6 +69,16 @@ export default function RuleEyePage() {
         </p>
         <p>
           これのトレーニングとして、画面内に固定されているHUDをなんとなく見た状態で視点を振りまわして敵にレティクルを合わせると良いでしょう。
+        </p>
+
+        <h3>目の動きの有無による反応速度の差を測定しよう！</h3>
+        <p>
+          これは雑に作ったなんとなくそうかもなと思えるくらいのツールです。入力遅延などもあるので実際の数値というより差だけを見てみるといいでしょう。
+          <br />
+          <a href="/tools/eye-movement-test/index.html">反応速度テスト</a>
+        </p>
+        <p>
+          やってみると固定視野のほうが反応速度がなんとなく早いなと感じましたが正確なものではないので参考程度にとどめておくといいでしょう。
         </p>
       </div>
     </>

@@ -2,8 +2,18 @@
   display: flex;
   gap: 8px;
   list-style: none;
+
+  overflow-x: scroll;
 }
 
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  flex-shrink: 0;
+  font-size: 14px;
+}
 .list a:hover {
   text-decoration: underline;
 }

@@ -6,6 +6,7 @@ import { breadcrumbData } from "./breadcrumData";
 import mediaStyle from "@/commons/styles/media.module.css";
 import { BookOpenIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function DocsLayout({
   children,
@@ -14,12 +15,15 @@ export default function DocsLayout({
 }) {
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [data, setData] = useState<Data[]>([]);
+  const router = usePathname();
+  const currentPath = router;
 
   useEffect(() => {
-    const currentPath = new URL(window.location.href).pathname;
+    console.log("currentPath", currentPath);
     const tempData = breadcrumbData[currentPath] ?? [];
     setData(tempData);
-  }, []);
+    setIsShowMenu(false);
+  }, [currentPath]);
 
   return (
     <section className={style.container}>
@@ -33,11 +37,9 @@ export default function DocsLayout({
         <Breadcrumb data={data} />
       </div>
       <div className={style.wrapper}>
-        {isShowMenu && (
-          <div className={style.sideMenu}>
-            <SideMenu />
-          </div>
-        )}
+        <div className={` ${style.sideMenu} ${isShowMenu ? style.show : ""}`}>
+          <SideMenu />
+        </div>
         <div className={style.content}>{children}</div>
       </div>
     </section>

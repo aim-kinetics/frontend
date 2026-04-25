@@ -3,13 +3,21 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import mediaStyle from "@/commons/styles/media.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
 export const Header: React.FC = () => {
   const [isShowNav, setIsShowNav] = useState(false);
+  const path = usePathname();
+
+  useEffect(() => {
+    setIsShowNav(false);
+  }, [path]);
   return (
     <header className={styles.header}>
       <h1>
-        <a href="/" className={styles.title}>
+        <Link href="/" className={styles.title}>
           <Image
             src="/logo-white.svg"
             alt="AIMの教科書ロゴ"
@@ -17,24 +25,24 @@ export const Header: React.FC = () => {
             height={40}
           ></Image>
           AIMの教科書
-        </a>
+        </Link>
       </h1>
       <nav className={`${styles.menu} ${mediaStyle.pcOnly}`}>
-        <a href="/">はじめに</a>
-        <a href="docs">ドキュメント</a>
-        <a href="/eye-training">コーチング依頼</a>
+        <Link href="/">はじめに</Link>
+        <Link href="/docs">ドキュメント</Link>
+        <Link href="/eye-training">コーチング依頼</Link>
       </nav>
       <button
         onClick={() => setIsShowNav((prev) => !prev)}
-        className={styles.navButton}
+        className={`${mediaStyle.spOnly} ${styles.navButton}`}
       >
         <Bars3Icon width={24} height={24} className={`${mediaStyle.spOnly}`} />
       </button>
       {isShowNav && (
         <nav className={`${styles.spMenu} ${mediaStyle.spOnly}`}>
-          <a href="/">はじめに</a>
-          <a href="docs">ドキュメント</a>
-          <a href="/eye-training">コーチング依頼</a>
+          <Link href="/">はじめに</Link>
+          <Link href="/docs">ドキュメント</Link>
+          <Link href="/docs/coaching">コーチング依頼</Link>
         </nav>
       )}
     </header>
