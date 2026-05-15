@@ -1,5 +1,5 @@
 "use client";
-import { SideMenu } from "@/commons/components/SideMenu.tsx/idnex";
+import { SideMenu } from "@/commons/components/SideMenu.tsx";
 import style from "./styles.module.css";
 import { Breadcrumb, Data } from "@/commons/components/Breadcrumb";
 import { breadcrumbData } from "./breadcrumData";

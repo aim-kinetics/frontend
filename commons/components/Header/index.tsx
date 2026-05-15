@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
       <nav className={`${styles.menu} ${mediaStyle.pcOnly}`}>
         <Link href="/">はじめに</Link>
         <Link href="/docs">ドキュメント</Link>
-        <Link href="/eye-training">コーチング依頼</Link>
+        <Link href="/docs/coaching">コーチング依頼</Link>
       </nav>
       <button
         onClick={() => setIsShowNav((prev) => !prev)}
