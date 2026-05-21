@@ -34,6 +34,11 @@ export const docsData: DocData = [
         title: "センサーの意識って結局なに？",
         url: "/docs/kinetics/sensor-awareness",
       },
+      {
+        dataType: "link",
+        title: "骨盤周りに上半身の体重を任せる",
+        url: "/docs/kinetics/pelvis-support-upper-body-weight",
+      },
     ],
   },
   {

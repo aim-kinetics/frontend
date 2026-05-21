@@ -88,6 +88,32 @@ export const breadcrumbData: Record<string, Data[]> = {
       title: "筋肉と関節の関係",
     },
   ],
+  "/docs/kinetics/pelvis-support-upper-body-weight": [
+    {
+      title: "ホーム",
+      url: "/",
+    },
+    {
+      title: "一覧",
+      url: "/docs",
+    },
+    {
+      title: "骨盤周りに上半身の体重を任せる",
+    },
+  ],
+  "/docs/kinetics/dont-lift-arm": [
+    {
+      title: "ホーム",
+      url: "/",
+    },
+    {
+      title: "一覧",
+      url: "/docs",
+    },
+    {
+      title: "腕を持ち上げない！",
+    },
+  ],
   "/docs/kinetics/control-from-mouse": [
     {
       title: "ホーム",
