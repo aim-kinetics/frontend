@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>左右マウス反応速度トレーナー</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        --bg: #111827;
+        --panel: #1f2937;
+        --text: #f9fafb;
+        --muted: #9ca3af;
+        --accent: #38bdf8;
+        --success: #34d399;
+        --danger: #fb7185;
+        --warning: #fbbf24;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        overflow: hidden;
+        user-select: none;
+      }
+
+      .app {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        background: rgba(31, 41, 55, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        z-index: 10;
+      }
+
+      header h1 {
+        margin: 0 auto 0 0;
+        font-size: 18px;
+      }
+
+      .setting {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      input[type="number"] {
+        width: 86px;
+        padding: 7px 9px;
+        border: 1px solid #4b5563;
+        border-radius: 8px;
+        background: #111827;
+        color: white;
+        font-size: 15px;
+      }
+
+      button {
+        padding: 8px 15px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--accent);
+        color: #082f49;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button:disabled,
+      input:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #stage {
+        position: relative;
+        min-height: 0;
+        cursor: crosshair;
+      }
+
+      #target {
+        position: absolute;
+        top: 50%;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: var(--warning);
+        box-shadow: 0 0 42px rgba(251, 191, 36, 0.65);
+        transform: translateY(-50%);
+        display: none;
+      }
+
+      #target.left {
+        left: 8%;
+      }
+
+      #target.right {
+        right: 8%;
+      }
+
+      #centerInfo {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        pointer-events: none;
+        padding: 20px;
+      }
+
+      #status {
+        margin: 0;
+        font-size: clamp(24px, 4vw, 50px);
+        font-weight: 800;
+      }
+
+      #subStatus {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: clamp(14px, 1.5vw, 19px);
+        white-space: pre-line;
+      }
+
+      #progressBar {
+        position: absolute;
+        left: 50%;
+        bottom: 10%;
+        width: min(460px, 75vw);
+        height: 12px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: #374151;
+        overflow: hidden;
+        display: none;
+      }
+
+      #progressFill {
+        width: 0%;
+        height: 100%;
+        background: var(--success);
+        transition: width 30ms linear;
+      }
+
+      footer {
+        padding: 12px 18px 16px;
+        background: rgba(31, 41, 55, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      #results {
+        width: min(100%, 900px);
+        margin: auto;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(100px, 1fr));
+        gap: 8px;
+      }
+
+      .stat {
+        padding: 9px;
+        border-radius: 8px;
+        background: #111827;
+        text-align: center;
+      }
+
+      .stat span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .stat strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 18px;
+      }
+
+      #trialList {
+        margin-top: 9px;
+        color: var(--muted);
+        font-size: 13px;
+        overflow-wrap: anywhere;
+      }
+
+      .good {
+        color: var(--success);
+      }
+
+      .bad {
+        color: var(--danger);
+      }
+
+      @media (max-width: 650px) {
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        #target {
+          width: 80px;
+          height: 80px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>左右マウス反応速度トレーナー</h1>
+
+        <label class="setting">
+          判定移動量
+          <input
+            id="distanceInput"
+            type="number"
+            min="1"
+            max="1000"
+            step="1"
+            value="30"
+          />
+          px
+        </label>
+
+        <button id="startButton">開始</button>
+      </header>
+
+      <section id="stage">
+        <div id="target"></div>
+
+        <div id="centerInfo">
+          <p id="status">「開始」を押してください</p>
+          <div id="subStatus">
+            開始後、左クリックを押したままマウスを停止してください。
+          </div>
+        </div>
+
+        <div id="progressBar">
+          <div id="progressFill"></div>
+        </div>
+      </section>
+
+      <footer>
+        <div id="results">
+          <div class="stats">
+            <div class="stat">
+              <span>平均</span><strong id="mean">-</strong>
+            </div>
+            <div class="stat">
+              <span>標準偏差</span><strong id="stdDev">-</strong>
+            </div>
+            <div class="stat"><span>最小</span><strong id="min">-</strong></div>
+            <div class="stat"><span>最大</span><strong id="max">-</strong></div>
+            <div class="stat">
+              <span>中央値</span><strong id="median">-</strong>
+            </div>
+          </div>
+          <div id="trialList">試行結果: -</div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      "use strict";
+
+      const TOTAL_TRIALS = 10;
+      const STOP_DURATION_MS = 350;
+      const MOVEMENT_TOLERANCE_PX = 1.5;
+      const MIN_DELAY_MS = 1000;
+      const MAX_DELAY_MS = 3000;
+
+      const stage = document.getElementById("stage");
+      const target = document.getElementById("target");
+      const statusText = document.getElementById("status");
+      const subStatus = document.getElementById("subStatus");
+      const progressBar = document.getElementById("progressBar");
+      const progressFill = document.getElementById("progressFill");
+      const startButton = document.getElementById("startButton");
+      const distanceInput = document.getElementById("distanceInput");
+
+      const meanElement = document.getElementById("mean");
+      const stdDevElement = document.getElementById("stdDev");
+      const minElement = document.getElementById("min");
+      const maxElement = document.getElementById("max");
+      const medianElement = document.getElementById("median");
+      const trialListElement = document.getElementById("trialList");
+
+      let state = "idle";
+      let trialNumber = 0;
+      let results = [];
+      let requiredDistance = 30;
+
+      let leftButtonDown = false;
+      let lastMovementAt = 0;
+      let standbyTimer = null;
+      let cueTimer = null;
+      let cueShownAt = 0;
+      let targetDirection = 0; // 左=-1、右=1
+      let directionalDistance = 0;
+
+      function setMessage(main, sub = "", className = "") {
+        statusText.textContent = main;
+        statusText.className = className;
+        subStatus.textContent = sub;
+      }
+
+      function clearTimers() {
+        clearInterval(standbyTimer);
+        clearTimeout(cueTimer);
+        standbyTimer = null;
+        cueTimer = null;
+      }
+
+      function hideTarget() {
+        target.style.display = "none";
+        target.className = "";
+        progressBar.style.display = "none";
+        progressFill.style.width = "0%";
+      }
+
+      function resetResultsDisplay() {
+        meanElement.textContent = "-";
+        stdDevElement.textContent = "-";
+        minElement.textContent = "-";
+        maxElement.textContent = "-";
+        medianElement.textContent = "-";
+        trialListElement.textContent = "試行結果: -";
+      }
+
+      function startSession() {
+        requiredDistance = Number(distanceInput.value);
+
+        if (!Number.isFinite(requiredDistance) || requiredDistance < 1) {
+          alert("移動px量は1以上の数値にしてください。");
+          return;
+        }
+
+        clearTimers();
+        hideTarget();
+        resetResultsDisplay();
+
+        results = [];
+        trialNumber = 0;
+        state = "waitingForHold";
+        leftButtonDown = false;
+        lastMovementAt = performance.now();
+
+        startButton.disabled = true;
+        distanceInput.disabled = true;
+
+        setMessage(
+          "左クリックを押したまま停止",
+          "マウスが350ms静止するとスタンバイに入ります。\n可能なら画面中央付近で開始してください。",
+        );
+      }
+
+      function beginNextTrial() {
+        clearTimers();
+        hideTarget();
+
+        if (results.length >= TOTAL_TRIALS) {
+          finishSession();
+          return;
+        }
+
+        trialNumber = results.length + 1;
+        state = "waitingForHold";
+        directionalDistance = 0;
+        lastMovementAt = performance.now();
+
+        setMessage(
+          `試行 ${trialNumber} / ${TOTAL_TRIALS}`,
+          "左クリックを押したまま、マウスを停止してください。",
+        );
+
+        standbyTimer = setInterval(checkStandbyCondition, 20);
+      }
+
+      function checkStandbyCondition() {
+        if (state !== "waitingForHold") return;
+        if (!leftButtonDown) return;
+
+        const stoppedFor = performance.now() - lastMovementAt;
+
+        if (stoppedFor >= STOP_DURATION_MS) {
+          enterStandby();
+        }
+      }
+
+      function enterStandby() {
+        clearInterval(standbyTimer);
+        standbyTimer = null;
+
+        state = "standby";
+        setMessage(
+          "スタンバイ",
+          "クリックを押したまま動かさず、丸が出るのを待ってください。",
+        );
+
+        const delay =
+          MIN_DELAY_MS + Math.random() * (MAX_DELAY_MS - MIN_DELAY_MS);
+
+        cueTimer = setTimeout(showCue, delay);
+      }
+
+      function showCue() {
+        if (state !== "standby" || !leftButtonDown) {
+          restartCurrentTrial("クリックが離されました");
+          return;
+        }
+
+        state = "reacting";
+        targetDirection = Math.random() < 0.5 ? -1 : 1;
+        directionalDistance = 0;
+        cueShownAt = performance.now();
+
+        target.className = targetDirection === -1 ? "left" : "right";
+        target.style.display = "block";
+        progressBar.style.display = "block";
+
+        setMessage(
+          targetDirection === -1 ? "← 左へ動かす" : "右へ動かす →",
+          `${requiredDistance}px 動かすと計測終了です。`,
+          "good",
+        );
+      }
+
+      function restartCurrentTrial(reason) {
+        clearTimers();
+        hideTarget();
+        state = "waitingForHold";
+        lastMovementAt = performance.now();
+
+        setMessage(
+          "やり直し",
+          `${reason}。この試行は記録せず、もう一度スタンバイしてください。`,
+          "bad",
+        );
+
+        standbyTimer = setInterval(checkStandbyCondition, 20);
+      }
+      function releasePointerLock() {
+        if (document.pointerLockElement) {
+          document.exitPointerLock();
+        }
+      }
+      function completeTrial() {
+        const reactionTime = performance.now() - cueShownAt;
+        results.push(reactionTime);
+
+        clearTimers();
+        hideTarget();
+
+        // 先に状態を変更してからPointer Lockを解除する
+        state = "betweenTrials";
+
+        if (document.pointerLockElement) {
+          document.exitPointerLock();
+        }
+
+        setMessage(
+          `${reactionTime.toFixed(1)} ms`,
+          `試行 ${results.length} / ${TOTAL_TRIALS} 完了`,
+          "good",
+        );
+
+        updateResultsDisplay();
+
+        setTimeout(beginNextTrial, 850);
+      }
+
+      function finishSession() {
+        state = "finished";
+        clearTimers();
+        hideTarget();
+
+        startButton.disabled = false;
+        distanceInput.disabled = false;
+
+        setMessage(
+          "10回終了",
+          "統計結果を下に表示しました。もう一度行う場合は「開始」を押してください。",
+          "good",
+        );
+
+        updateResultsDisplay();
+      }
+
+      function handleMouseMove(event) {
+        const now = performance.now();
+        const dx = Number.isFinite(event.movementX) ? event.movementX : 0;
+        const dy = Number.isFinite(event.movementY) ? event.movementY : 0;
+        const totalMovement = Math.hypot(dx, dy);
+
+        if (totalMovement > MOVEMENT_TOLERANCE_PX) {
+          lastMovementAt = now;
+        }
+
+        if (state === "standby" && totalMovement > MOVEMENT_TOLERANCE_PX) {
+          restartCurrentTrial("合図前にマウスが動きました");
+          return;
+        }
+
+        if (state !== "reacting") return;
+
+        // 正しい方向への移動だけを加算し、逆方向への移動は差し引きます。
+        directionalDistance = Math.max(
+          0,
+          directionalDistance + dx * targetDirection,
+        );
+
+        const progress = Math.min(
+          100,
+          (directionalDistance / requiredDistance) * 100,
+        );
+        progressFill.style.width = `${progress}%`;
+
+        if (directionalDistance >= requiredDistance) {
+          completeTrial();
+        }
+      }
+
+      function updateResultsDisplay() {
+        if (results.length === 0) return;
+
+        const sorted = [...results].sort((a, b) => a - b);
+        const mean =
+          results.reduce((sum, value) => sum + value, 0) / results.length;
+
+        // 今回の10試行全体を母集団として扱う母標準偏差
+        const variance =
+          results.reduce((sum, value) => sum + (value - mean) ** 2, 0) /
+          results.length;
+        const stdDev = Math.sqrt(variance);
+
+        const median =
+          sorted.length % 2 === 1
+            ? sorted[Math.floor(sorted.length / 2)]
+            : (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2;
+
+        meanElement.textContent = `${mean.toFixed(1)} ms`;
+        stdDevElement.textContent = `${stdDev.toFixed(1)} ms`;
+        minElement.textContent = `${Math.min(...results).toFixed(1)} ms`;
+        maxElement.textContent = `${Math.max(...results).toFixed(1)} ms`;
+        medianElement.textContent = `${median.toFixed(1)} ms`;
+
+        trialListElement.textContent =
+          "試行結果: " +
+          results
+            .map((value, index) => `${index + 1}: ${value.toFixed(1)}ms`)
+            .join(" / ");
+      }
+
+      stage.addEventListener("mousedown", (event) => {
+        if (event.button !== 0) return;
+
+        leftButtonDown = true;
+        lastMovementAt = performance.now();
+
+        // Pointer Lockにより、画面端でもmovementXを継続して取得できます。
+        if (
+          state !== "idle" &&
+          state !== "finished" &&
+          document.pointerLockElement !== stage
+        ) {
+          stage.requestPointerLock?.();
+        }
+
+        if (state === "waitingForHold" && standbyTimer === null) {
+          standbyTimer = setInterval(checkStandbyCondition, 20);
+        }
+      });
+      document.addEventListener("mouseup", (event) => {
+        if (event.button !== 0) return;
+
+        leftButtonDown = false;
+
+        if (state === "standby" || state === "reacting") {
+          // 先に状態を変更し、pointerlockchangeによる二重処理を防ぐ
+          state = "waitingForHold";
+
+          releasePointerLock();
+
+          restartCurrentTrial("左クリックが離されました");
+          return;
+        }
+
+        // 試行完了後などでも、残っていれば解除
+        releasePointerLock();
+      });
+
+      document.addEventListener("mousemove", handleMouseMove);
+
+      document.addEventListener("pointerlockchange", () => {
+        if (
+          document.pointerLockElement !== stage &&
+          (state === "standby" || state === "reacting")
+        ) {
+          leftButtonDown = false;
+          restartCurrentTrial("マウスロックが解除されました");
+        }
+      });
+
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault(),
+      );
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "Escape" &&
+          state !== "idle" &&
+          state !== "finished"
+        ) {
+          clearTimers();
+          hideTarget();
+          state = "finished";
+          startButton.disabled = false;
+          distanceInput.disabled = false;
+          setMessage("中断しました", "再開するには「開始」を押してください。");
+        }
+      });
+
+      startButton.addEventListener("click", () => {
+        startSession();
+        beginNextTrial();
+      });
+    </script>
+  </body>
+</html>
