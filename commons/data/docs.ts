@@ -62,4 +62,15 @@ export const docsData: DocData = [
       },
     ],
   },
+  {
+    title: "Q&A",
+    dataType: "header",
+    data: [
+      {
+        dataType: "link",
+        title: "クリックによる力みを解消する",
+        url: "/qa/clicking-muscle-coordination",
+      },
+    ],
+  },
 ];
