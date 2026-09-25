@@ -1,0 +1,10 @@
+.exercise {
+  margin-bottom: 24px;
+}
+
+.exercise img {
+  width: 640px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}

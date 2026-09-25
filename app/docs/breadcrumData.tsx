@@ -1,6 +1,46 @@
 import { Data } from "@/commons/components/Breadcrumb";
 
 export const breadcrumbData: Record<string, Data[]> = {
+  "/docs/training/tactile-feedback-training": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "触覚フィードバックのトレーニング" },
+  ],
+  "/docs/training/three-screen-layers": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "3層のレイヤーで画面をとらえる" },
+  ],
+  "/docs/output/elbow-output": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "内臓を下げてマウスを操作する" },
+  ],
+  "/docs/input/visual-input": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "視覚によるインプット" },
+  ],
+  "/docs/input/mouse-operation": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "数多あるマウス操作論は触覚に通ずる" },
+  ],
+  "/docs/input/tactile-input": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "触覚によるインプット" },
+  ],
+  "/docs/output/neural-output": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "神経から見るアウトプット" },
+  ],
+  "/docs/output/muscle-output": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "筋肉から見るアウトプット" },
+  ],
   "/docs": [
     {
       title: "ホーム",
@@ -152,5 +192,15 @@ export const breadcrumbData: Record<string, Data[]> = {
     {
       title: "センサーの意識って結局なに？",
     },
+  ],
+  "/docs/training/whole-hand-tactile-training": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "手全体の触覚を整える練習" },
+  ],
+  "/docs/training/median-nerve-stretch": [
+    { title: "\u30db\u30fc\u30e0", url: "/" },
+    { title: "\u4e00\u89a7", url: "/docs" },
+    { title: "正中神経ストレッチ" },
   ],
 };

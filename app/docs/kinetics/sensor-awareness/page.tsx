@@ -1,14 +1,16 @@
+import { createPageMetadata } from "@/commons/metadata";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "AIMの教科書 | センサーの意識って結局なに？",
   description:
     "マウスの動かし方について、手・腕・肩の順に動かす方がよいと考えられる。また、手首は前腕から、腕は肩甲骨から動かすことが重要であることを解説しています。",
-};
+  path: "/docs/kinetics/sensor-awareness",
+});
 export default function RuleAbdominalBreathingPage() {
   return (
     <>

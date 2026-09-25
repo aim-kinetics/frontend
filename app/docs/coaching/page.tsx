@@ -2,6 +2,14 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
+import { createPageMetadata } from "@/commons/metadata";
+
+export const metadata = createPageMetadata({
+  title: "コーチング | AIMの教科書",
+  description: "AIMのコーチングの受付と、お問い合わせ先をご案内します。",
+  path: "/docs/coaching",
+  type: "website",
+});
 
 export default function CoachingPage() {
   return (

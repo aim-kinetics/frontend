@@ -3,17 +3,14 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import mediaStyle from "@/commons/styles/media.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export const Header: React.FC = () => {
-  const [isShowNav, setIsShowNav] = useState(false);
+  const [openNavPath, setOpenNavPath] = useState<string | null>(null);
   const path = usePathname();
-
-  useEffect(() => {
-    setIsShowNav(false);
-  }, [path]);
+  const isShowNav = openNavPath === path;
   return (
     <header className={styles.header}>
       <h1>
@@ -31,9 +28,10 @@ export const Header: React.FC = () => {
         <Link href="/">はじめに</Link>
         <Link href="/docs">ドキュメント</Link>
         <Link href="/docs/coaching">コーチング依頼</Link>
+        <Link href="/sitemap">サイトマップ</Link>
       </nav>
       <button
-        onClick={() => setIsShowNav((prev) => !prev)}
+        onClick={() => setOpenNavPath(isShowNav ? null : path)}
         className={`${mediaStyle.spOnly} ${styles.navButton}`}
       >
         <Bars3Icon width={24} height={24} className={`${mediaStyle.spOnly}`} />
@@ -43,6 +41,7 @@ export const Header: React.FC = () => {
           <Link href="/">はじめに</Link>
           <Link href="/docs">ドキュメント</Link>
           <Link href="/docs/coaching">コーチング依頼</Link>
+          <Link href="/sitemap">サイトマップ</Link>
         </nav>
       )}
     </header>

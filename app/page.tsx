@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/commons/metadata";
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Header } from "../commons/components/Header";
@@ -7,11 +8,13 @@ import { MenuSection } from "./_components/MenuSection";
 import { Menu } from "radix-ui/internal";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "AIMの教科書 | HOME",
   description:
     "「AIMの教科書」は、AIMを学ぶためのドキュメントやコーチングについてまとめたサイトです。",
-};
+  path: "/",
+  type: "website",
+});
 
 export default function Home() {
   return (
