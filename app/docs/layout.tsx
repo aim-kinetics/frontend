@@ -5,31 +5,24 @@ import { Breadcrumb, Data } from "@/commons/components/Breadcrumb";
 import { breadcrumbData } from "./breadcrumData";
 import mediaStyle from "@/commons/styles/media.module.css";
 import { BookOpenIcon } from "@heroicons/react/24/solid";
-import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function DocsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isShowMenu, setIsShowMenu] = useState(false);
-  const [data, setData] = useState<Data[]>([]);
-  const router = usePathname();
-  const currentPath = router;
-
-  useEffect(() => {
-    console.log("currentPath", currentPath);
-    const tempData = breadcrumbData[currentPath] ?? [];
-    setData(tempData);
-    setIsShowMenu(false);
-  }, [currentPath]);
+  const [openMenuPath, setOpenMenuPath] = useState<string | null>(null);
+  const currentPath = usePathname();
+  const data: Data[] = breadcrumbData[currentPath] ?? [];
+  const isShowMenu = openMenuPath === currentPath;
 
   return (
     <section className={style.container}>
       <div className={style.breadcrumb}>
         <button
-          onClick={() => setIsShowMenu((prev) => !prev)}
+          onClick={() => setOpenMenuPath(isShowMenu ? null : currentPath)}
           className={` ${mediaStyle.spOnly} ${style.icon}`}
         >
           <BookOpenIcon width="20" height="20" />

@@ -99,4 +99,37 @@ export const docsData: DocData = [
       },
     ],
   },
+  {
+    title: "トレーニング方法",
+    dataType: "header",
+    data: [
+      {
+        title: "3層のレイヤーで画面をとらえる",
+        url: "/docs/training/three-screen-layers",
+        dataType: "link",
+      },
+      {
+        title: "触覚フィードバックのトレーニング",
+        url: "/docs/training/tactile-feedback-training",
+        dataType: "link",
+      },
+    ],
+  },
+
+  {
+    title: "手全体の触覚トレーニング",
+    dataType: "header",
+    data: [
+      {
+        title: "手全体の触覚を整える練習",
+        url: "/docs/training/whole-hand-tactile-training",
+        dataType: "link",
+      },
+      {
+        title: "正中神経ストレッチ",
+        url: "/docs/training/median-nerve-stretch",
+        dataType: "link",
+      },
+    ],
+  },
 ];

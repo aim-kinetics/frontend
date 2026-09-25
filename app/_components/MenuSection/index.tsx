@@ -1,11 +1,5 @@
-import {
-  BoltIcon,
-  CursorArrowRaysIcon,
-  HandRaisedIcon,
-} from "@heroicons/react/24/solid";
 import Link from "next/link";
 import style from "./styles.module.css";
-import Image from "next/image";
 import { docsData } from "@/commons/data/docs";
 export const MenuSection: React.FC = () => {
   return (
@@ -13,14 +7,14 @@ export const MenuSection: React.FC = () => {
       <h2 className={style.title}>AIM理論基礎</h2>
       <ul className={style.list}>
         {docsData.map((data, index) => (
-          <li className={style.listItem}>
+          <li className={style.listItem} key={data.title}>
             <div className={style.listItemHeader}>
               <p className={style.number}>{index + 1}</p>
               <p className={style.listItemLink}>{data.title}</p>
             </div>
             <ul className={style.subList}>
               {data.data?.map((data, index) => (
-                <li className={style.subListItem}>
+                <li className={style.subListItem} key={data.title}>
                   <p className={style.subNumber}>{index + 1}.</p>
                   {data.dataType === "link" ? (
                     <Link href={data.url} className={style.subListItemLink}>

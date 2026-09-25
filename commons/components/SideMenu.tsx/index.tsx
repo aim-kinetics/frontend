@@ -5,11 +5,11 @@ export const SideMenu: React.FC = () => {
   return (
     <div className={style.container}>
       {docsData.map((data) => (
-        <>
+        <div key={data.title}>
           <p className={style.title}>{data.title}</p>
           <ul className={style.list}>
             {data.data?.map((data) => (
-              <li className={style.item}>
+              <li className={style.item} key={data.title}>
                 {data.dataType === "link" ? (
                   <Link href={data.url}>{data.title}</Link>
                 ) : (
@@ -18,7 +18,7 @@ export const SideMenu: React.FC = () => {
               </li>
             ))}
           </ul>
-        </>
+        </div>
       ))}
     </div>
   );

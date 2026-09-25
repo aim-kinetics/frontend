@@ -1,6 +1,16 @@
 import { Data } from "@/commons/components/Breadcrumb";
 
 export const breadcrumbData: Record<string, Data[]> = {
+  "/docs/training/tactile-feedback-training": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "触覚フィードバックのトレーニング" },
+  ],
+  "/docs/training/three-screen-layers": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "3層のレイヤーで画面をとらえる" },
+  ],
   "/docs/output/elbow-output": [
     { title: "ホーム", url: "/" },
     { title: "一覧", url: "/docs" },
@@ -182,5 +192,15 @@ export const breadcrumbData: Record<string, Data[]> = {
     {
       title: "センサーの意識って結局なに？",
     },
+  ],
+  "/docs/training/whole-hand-tactile-training": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "手全体の触覚を整える練習" },
+  ],
+  "/docs/training/median-nerve-stretch": [
+    { title: "\u30db\u30fc\u30e0", url: "/" },
+    { title: "\u4e00\u89a7", url: "/docs" },
+    { title: "正中神経ストレッチ" },
   ],
 };
