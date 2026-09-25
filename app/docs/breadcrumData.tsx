@@ -1,6 +1,36 @@
 import { Data } from "@/commons/components/Breadcrumb";
 
 export const breadcrumbData: Record<string, Data[]> = {
+  "/docs/output/elbow-output": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "内臓を下げてマウスを操作する" },
+  ],
+  "/docs/input/visual-input": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "視覚によるインプット" },
+  ],
+  "/docs/input/mouse-operation": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "数多あるマウス操作論は触覚に通ずる" },
+  ],
+  "/docs/input/tactile-input": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "触覚によるインプット" },
+  ],
+  "/docs/output/neural-output": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "神経から見るアウトプット" },
+  ],
+  "/docs/output/muscle-output": [
+    { title: "ホーム", url: "/" },
+    { title: "一覧", url: "/docs" },
+    { title: "筋肉から見るアウトプット" },
+  ],
   "/docs": [
     {
       title: "ホーム",

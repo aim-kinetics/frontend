@@ -1,14 +1,17 @@
+import { createPageMetadata } from "@/commons/metadata";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "AIMの教科書 | 筋肉と関節の関係",
   description:
     "マウスの動かし方について、手首は前腕から、腕は肩甲骨から動かすことが重要であることを解説しています。",
-};
+  path: "/docs/kinetics/relationship-between-muscles-and-joints",
+  image: "/image/前腕屈筋群浅層.jpeg",
+});
 export default function RuleKineticsPage() {
   return (
     <>

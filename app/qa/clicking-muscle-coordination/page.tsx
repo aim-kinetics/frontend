@@ -1,3 +1,4 @@
+import { createPageMetadata } from "@/commons/metadata";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
@@ -5,10 +6,12 @@ import { Breadcrumb } from "@/commons/components/Breadcrumb";
 import { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "AIMの教科書 | クリックによる力みを解消する",
-  description: "",
-};
+  description: "????????????????????????????????????????",
+  path: "/qa/clicking-muscle-coordination",
+  image: "/image/指屈筋群浅層.jpeg",
+});
 export default function RuleEyePage() {
   return (
     <>

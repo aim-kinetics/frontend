@@ -1,14 +1,16 @@
+import { createPageMetadata } from "@/commons/metadata";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "AIMの教科書 | 腕を持ち上げない！",
   description:
     "ただ脱力するだけではなく脱力した分の重さを支える箇所をマウスに乗せ、それを一定に保つことが安定したAIMの秘訣だと説明しています。",
-};
+  path: "/docs/kinetics/dont-lift-arm",
+});
 export default function RuleKineticsPage() {
   return (
     <>

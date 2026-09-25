@@ -11,65 +11,45 @@ type DocHeaderData = {
 type DocData = ((DocHeaderData | DocLinkData) & { data?: DocData })[];
 export const docsData: DocData = [
   {
-    title: "体の使い方",
+    title: "情報のインプット",
     dataType: "header",
     data: [
       {
+        title: "視覚によるインプット",
+        url: "/docs/input/visual-input",
         dataType: "link",
-        title: "コントロールはマウスから！",
-        url: "/docs/kinetics/control-from-mouse",
       },
       {
+        title: "触覚によるインプット",
+        url: "/docs/input/tactile-input",
         dataType: "link",
-        title: "指先を動かさないで！",
-        url: "/docs/kinetics/dont-move-finger",
       },
       {
+        title: "数多あるマウス操作論は触覚に通ずる",
+        url: "/docs/input/mouse-operation",
         dataType: "link",
-        title: "腕を持ち上げない！",
-        url: "/docs/kinetics/dont-lift-arm",
-      },
-      {
-        dataType: "link",
-        title: "センサーの意識って結局なに？",
-        url: "/docs/kinetics/sensor-awareness",
-      },
-      {
-        dataType: "link",
-        title: "骨盤周りに上半身の体重を任せる",
-        url: "/docs/kinetics/pelvis-support-upper-body-weight",
       },
     ],
   },
+
   {
-    title: "目の使い方",
+    title: "マウスへのアウトプット",
     dataType: "header",
     data: [
       {
+        title: "筋肉から見るアウトプット",
+        url: "/docs/output/muscle-output",
         dataType: "link",
-        title: "爆速神経回路で反射しよう！",
-        url: "/docs/eye/react-with-lightning-fast",
       },
       {
+        title: "神経から見るアウトプット",
+        url: "/docs/output/neural-output",
         dataType: "link",
-        title: "目の動きを手で再現する",
-        url: "/docs/eye/recreate-eye-movements",
       },
       {
+        title: "内臓を下げてマウスを操作する",
+        url: "/docs/output/elbow-output",
         dataType: "link",
-        title: "目を動かす動かさない論争",
-        url: "/docs/eye/move-your-eyes-or-not",
-      },
-    ],
-  },
-  {
-    title: "Q&A",
-    dataType: "header",
-    data: [
-      {
-        dataType: "link",
-        title: "クリックによる力みを解消する",
-        url: "/qa/clicking-muscle-coordination",
       },
     ],
   },

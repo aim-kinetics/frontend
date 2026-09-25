@@ -1,0 +1,15 @@
+.originalTitle {
+  font-weight: bold;
+}
+
+.figure {
+  margin: 0 0 32px;
+  width: 420px;
+  max-width: 100%;
+}
+
+.figure figcaption {
+  color: #c5c7cb;
+  font-size: 14px;
+  line-height: 1.8;
+}

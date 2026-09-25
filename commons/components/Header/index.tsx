@@ -31,6 +31,7 @@ export const Header: React.FC = () => {
         <Link href="/">はじめに</Link>
         <Link href="/docs">ドキュメント</Link>
         <Link href="/docs/coaching">コーチング依頼</Link>
+        <Link href="/sitemap">サイトマップ</Link>
       </nav>
       <button
         onClick={() => setIsShowNav((prev) => !prev)}
@@ -43,6 +44,7 @@ export const Header: React.FC = () => {
           <Link href="/">はじめに</Link>
           <Link href="/docs">ドキュメント</Link>
           <Link href="/docs/coaching">コーチング依頼</Link>
+          <Link href="/sitemap">サイトマップ</Link>
         </nav>
       )}
     </header>

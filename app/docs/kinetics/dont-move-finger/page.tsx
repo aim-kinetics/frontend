@@ -1,14 +1,17 @@
+import { createPageMetadata } from "@/commons/metadata";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import style from "@/commons/styles/global.module.css";
 import { Breadcrumb } from "@/commons/components/Breadcrumb";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "AIMの教科書 | 指の意識について",
   description:
     "指の動きについて、親指の特殊な動きとその影響について解説しています。",
-};
+  path: "/docs/kinetics/dont-move-finger",
+  image: "/image/指屈筋群浅層.jpeg",
+});
 
 export default function RuleThumbPage() {
   return (
